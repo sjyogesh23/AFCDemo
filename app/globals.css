@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Tech Blue Palette */
+    --tech-blue-50: 210 100% 97%;
+    --tech-blue-100: 210 100% 95%;
+    --tech-blue-200: 210 100% 90%;
+    --tech-blue-300: 210 100% 80%;
+    --tech-blue-400: 210 100% 70%;
+    --tech-blue-500: 210 100% 50%;
+    --tech-blue-600: 210 100% 40%;
+    --tech-blue-700: 210 100% 35%;
+    --tech-blue-800: 210 100% 30%;
+    --tech-blue-900: 210 100% 25%;
+    --tech-blue-950: 210 100% 20%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 217.2 32.6% 17.5%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 9.8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 40%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    /* Dark Mode Tech Blue Palette - Softer shades for dark mode */
+    --tech-blue-50: 210 30% 15%;
+    --tech-blue-100: 210 30% 20%;
+    --tech-blue-200: 210 30% 25%;
+    --tech-blue-300: 210 30% 30%;
+    --tech-blue-400: 210 30% 40%;
+    --tech-blue-500: 210 70% 50%;
+    --tech-blue-600: 210 80% 60%;
+    --tech-blue-700: 210 90% 70%;
+    --tech-blue-800: 210 90% 80%;
+    --tech-blue-900: 210 90% 90%;
+    --tech-blue-950: 210 90% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom utility classes */
+.tech-gradient {
+  @apply bg-gradient-to-r from-blue-600 to-blue-500;
+}
+
+.dark .tech-gradient {
+  @apply bg-gradient-to-r from-blue-500 to-blue-400;
+}
+
+.tech-card {
+  @apply border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+.tech-card-hover {
+  @apply hover:border-blue-300 dark:hover:border-blue-700 cursor-pointer;
+}
+
+.tech-icon-container {
+  @apply p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
+}
+
+.tech-icon-container-secondary {
+  @apply p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400;
+}
+
+.tech-icon-container-success {
+  @apply p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400;
+}
+
+.tech-icon-container-warning {
+  @apply p-2 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400;
+}
+
+.tech-icon-container-error {
+  @apply p-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400;
+}
+
+.tech-badge-primary {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300;
+}
+
+.tech-badge-secondary {
+  @apply bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300;
+}
+
+.tech-badge-success {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300;
+}
+
+.tech-badge-warning {
+  @apply bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300;
+}
+
+.tech-badge-error {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+}
+
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900;
+}
+
+.notification-dot {
+  @apply absolute -top-1 -right-1 h-2 w-2 rounded-full bg-red-500;
+}
+
+.notification-badge {
+  @apply absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center rounded-full bg-red-500 text-white text-xs;
+}
