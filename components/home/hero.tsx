@@ -7,6 +7,36 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Heart, Shield, Users, Mic, MessageSquare, Send, FileText } from "lucide-react"
 
+// Get New York current date and time
+const getNewYorkDateTime = () => {
+  const now = new Date()
+  const newYorkFormatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  })
+
+  const parts = newYorkFormatter.formatToParts(now)
+  const dateParts = {}
+  for (const part of parts) {
+    if (part.type !== "literal") {
+      dateParts[part.type] = part.value
+    }
+  }
+
+  const cur_date = `${dateParts.year}-${dateParts.month}-${dateParts.day}`
+  const cur_time = `${dateParts.hour}:${dateParts.minute}:${dateParts.second}`
+
+  return { cur_date, cur_time }
+}
+
+const { cur_date, cur_time } = getNewYorkDateTime()
+
 export function Hero() {
   const [openForm, setOpenForm] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
@@ -16,8 +46,8 @@ export function Hero() {
     date: "",
     time: "",
     reason: "",
-    submittedDate: new Date().toISOString().split("T")[0],
-    submittedTime: new Date().toTimeString().split(" ")[0],
+    submittedDate: cur_date,
+    submittedTime: cur_time,
   })
 
   const isFormComplete = Object.values(form).every(val => val.trim() !== "")
@@ -136,8 +166,8 @@ export function Hero() {
                   pattern="[0-9]*"
                   value={form.phone}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, "");
-                    setForm({ ...form, phone: value });
+                    const value = e.target.value.replace(/\D/g, "")
+                    setForm({ ...form, phone: value })
                   }}
                   className="flex-1 px-3 outline-none bg-transparent"
                   placeholder="1234567890"
