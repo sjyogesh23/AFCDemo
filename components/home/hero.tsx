@@ -16,6 +16,8 @@ export function Hero() {
     date: "",
     time: "",
     reason: "",
+    submittedDate: new Date().toISOString().split("T")[0],
+    submittedTime: new Date().toTimeString().split(" ")[0],
   })
 
   const isFormComplete = Object.values(form).every(val => val.trim() !== "")
@@ -126,7 +128,21 @@ export function Hero() {
             </div>
             <div>
               <Label>Phone Number</Label>
-              <Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+              <div className="flex items-center border rounded-md overflow-hidden">
+                <span className="px-3 py-2 bg-gray-100 text-gray-500 border-r">+1</span>
+                <input
+                  type="tel"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  value={form.phone}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, "");
+                    setForm({ ...form, phone: value });
+                  }}
+                  className="flex-1 px-3 outline-none bg-transparent"
+                  placeholder="1234567890"
+                />
+              </div>
             </div>
             <div>
               <Label>Date</Label>
