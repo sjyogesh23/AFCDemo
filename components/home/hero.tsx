@@ -54,7 +54,7 @@ export function Hero() {
 
   const handleSubmit = async () => {
     try {
-      await fetch("https://n8n.rbdesigntech.com/webhook/afcwebdemo", {
+      await fetch("https://seenzoneyt.app.n8n.cloud/webhook/afcdemo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
